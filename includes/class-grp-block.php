@@ -13,7 +13,7 @@ class GuttyRelatedPosts_Block {
     private GuttyRelatedPosts_Keyword_Handler $keyword_handler;
 
     public function __construct() {
-        // Instantiate the GGuttyRelatedPosts_Keyword_Handler class
+        // Instantiate the GuttyRelatedPosts_Keyword_Handler class
         $this->keyword_handler = new GuttyRelatedPosts_Keyword_Handler();
 
         // Register hooks
@@ -50,6 +50,7 @@ class GuttyRelatedPosts_Block {
                 if (!empty($post__in)) {
                     $query['post__in'] = $post__in;
                 }
+
                 return $query;
             });
         }
@@ -63,6 +64,29 @@ class GuttyRelatedPosts_Block {
         }
         return $args;
     }
+
+    public function get_related_posts($post_in = null, $number = 5) {
+        // If no post IDs are provided, fetch related posts for the current post
+        if ($post_in === null) {
+            return $this->keyword_handler->get_related_posts(get_the_ID(), $number);
+        }
+    
+        // Convert post_in string to an array of integers
+        $post_ids = array_map('intval', explode(',', $post_in));
+        
+        // Get related posts based on the provided IDs
+        if (empty($post_ids)) {
+            return [];
+        }
+    
+        // Use your existing logic to fetch related posts
+        $related_posts = $this->keyword_handler->get_related_posts(get_the_ID(), $number);
+        
+        // If specific IDs are provided, filter the results
+        return array_filter($related_posts, function($post) use ($post_ids) {
+            return in_array($post->ID, $post_ids);
+        });
+    }    
 }
 
 // Initialize the GuttyRelatedPosts_Block class

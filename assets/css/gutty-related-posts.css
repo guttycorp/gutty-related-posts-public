@@ -1,0 +1,35 @@
+.gutty-related-posts-items {
+    gap: 1rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gutty-related-posts-items article {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s;
+}
+
+.gutty-related-posts-items article:hover {
+    transform: translateY(-5px);
+}
+
+.gutty-related-posts-items figure {
+    margin: 0;
+}
+
+.gutty-related-posts-items img {
+    width: 100%;
+    height: auto;
+}
+
+.gutty-related-posts-item {
+    padding: 0 1rem;
+}
+
+.gutty-related-posts-item-read-more {
+    margin: 0;
+}

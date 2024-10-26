@@ -1,0 +1,10 @@
+.gutty-related-posts-notice {
+    background: #fff;
+    padding: 2rem;
+    margin: 1rem 0 2rem 0;
+}
+
+.gutty-related-posts-notice-items {
+    display: flex;
+    gap: 2rem;
+}

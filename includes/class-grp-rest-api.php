@@ -20,7 +20,7 @@ class GuttyRelatedPosts_REST_API {
     }
 
     public function register_routes() {
-        register_rest_route('grp/v1', '/gutty-related-posts', [
+        register_rest_route('gutty-related-posts/v1', '/gutty-related-posts', [
             'methods' => 'GET',
             'callback' => [$this, 'get_related_posts'],
             'permission_callback' => '__return_true',
@@ -45,8 +45,6 @@ class GuttyRelatedPosts_REST_API {
 		foreach ($related_posts as $post) {	
 			$posts_data[] = [
 				'id'             => $post->ID,
-				'title'          => get_the_title($post->ID),
-				'link'           => get_permalink($post->ID)
 			];
 		}
 	
