@@ -6,7 +6,7 @@ Tags: full site editing, block editor, blocks, related posts
 Requires at least: 6.4+
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,12 @@ Make your content more engaging by offering visitors personalized, relevant read
 
 Source available on our Github public repository: https://github.com/guttycorp/gutty-related-posts-public
 
+== Screenshots ==
+1. Gutty Related Posts plugin in action!
+2. Gutty Related Posts settings page
+3. Gutty Related Posts block - Full Site Editing
+4. Gutty Related Posts block - Full Site Editing
+
 == Installation ==
 
 1. Upload 'gutty-related-posts' to the '/wp-content/plugins/' directory
@@ -42,6 +48,9 @@ Source available on our Github public repository: https://github.com/guttycorp/g
 5. Enjoy!
 
 == Changelog ==
+= 1.2 =
+* NEW Option to automatically display the related post block after the post content (Posts only)
+
 = 1.1 =
 * NEW [gutty_related_posts] shortcode for page builders
 * NEW Shortcode settings

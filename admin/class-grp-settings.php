@@ -64,6 +64,15 @@ class GuttyRelatedPosts_Settings {
             'guttyrelatedposts_settings_section'
         );
 
+        // Automatically Display Block Field
+        add_settings_field(
+            'guttyrelatedposts_after_post_content',
+            __('Automatically display the block', 'gutty-related-posts'),
+            [$this, 'after_post_content'],
+            'guttyrelatedposts-settings',
+            'guttyrelatedposts_settings_section'
+        );
+
         // Default Title Field
         add_settings_field(
             'guttyrelatedposts_default_title',
@@ -109,6 +118,10 @@ class GuttyRelatedPosts_Settings {
             $sanitized['guttyrelatedposts_image_size'] = sanitize_text_field($input['guttyrelatedposts_image_size']);
         }
 
+        if (isset($input['guttyrelatedposts_after_post_content'])) {
+            $sanitized['guttyrelatedposts_after_post_content'] = (bool) $input['guttyrelatedposts_after_post_content'];
+        }
+
         // Default title
         if (isset($input['guttyrelatedposts_default_title'])) {
             $sanitized['guttyrelatedposts_default_title'] = sanitize_text_field($input['guttyrelatedposts_default_title']);
@@ -152,12 +165,21 @@ class GuttyRelatedPosts_Settings {
         <?php
     }
 
+    public function after_post_content() {
+        $options = get_option('guttyrelatedposts_settings');
+        $after_post_content = isset($options['guttyrelatedposts_after_post_content']) ? (bool) $options['guttyrelatedposts_after_post_content'] : false;
+        ?>
+        <input id="guttyrelatedposts_after_post_content" type="checkbox" name="guttyrelatedposts_settings[guttyrelatedposts_after_post_content]" value="1" <?php checked($after_post_content, true); ?>>
+        <label for="guttyrelatedposts_after_post_content"><?php esc_html_e('Enable to automatically display the block after post content (Posts only)', 'gutty-related-posts'); ?></label>
+        <?php
+    }
+
     // Render Default Title Field
     public function default_title_render() {
         $options = get_option('guttyrelatedposts_settings');
         $default_title = $options['guttyrelatedposts_default_title'] ?? __('Related Posts', 'gutty-related-posts');
         ?>
-        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_default_title]" value="<?php echo esc_attr($default_title); ?>">
+        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_default_title]" value="<?php echo esc_attr($default_title); ?>" placeholder="<?php esc_attr_e('Related Posts', 'gutty-related-posts'); ?>">
         <?php
     }
 
@@ -166,16 +188,16 @@ class GuttyRelatedPosts_Settings {
         $options = get_option('guttyrelatedposts_settings');
         $read_more_text = $options['guttyrelatedposts_read_more_text'] ?? __('Read more', 'gutty-related-posts');
         ?>
-        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_read_more_text]" value="<?php echo esc_attr($read_more_text); ?>">
+        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_read_more_text]" value="<?php echo esc_attr($read_more_text); ?>" placeholder="<?php esc_attr_e('Read more', 'gutty-related-posts'); ?>">
         <?php
     }
 
-    // Render "Read More" Text Field
+    // Render "No Related Posts found." Text Field
     public function none_posts_text_render() {
         $options = get_option('guttyrelatedposts_settings');
         $none_posts_text = $options['guttyrelatedposts_none_posts_text'] ?? __('No related posts found.', 'gutty-related-posts');
         ?>
-        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_none_posts_text]" value="<?php echo esc_attr($none_posts_text); ?>">
+        <input type="text" name="guttyrelatedposts_settings[guttyrelatedposts_none_posts_text]" value="<?php echo esc_attr($none_posts_text); ?>" placeholder="<?php esc_attr_e('No related posts found.', 'gutty-related-posts'); ?>">
         <?php
     }
 

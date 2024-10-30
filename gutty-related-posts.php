@@ -3,7 +3,7 @@
 Plugin Name: Gutty Related Posts
 Plugin URI: https://guttypress.com/
 Description: Gutty Related Posts is the best way to show related and relevant content on your WordPress site using the power of the Block Editor and Full Site Editing.
-Version: 1.1
+Version: 1.2
 Author: Team GuttyPress
 Author URI: https://profiles.wordpress.org/guttypress/
 License: GPL2
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GUTTY_RELATED_POSTS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GUTTY_RELATED_POSTS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('GUTTY_RELATED_POSTS_VERSION', '1.1');
+define('GUTTY_RELATED_POSTS_VERSION', '1.2');
 define('GUTTY_RELATED_POSTS_STOP_WORDS', GUTTY_RELATED_POSTS_PLUGIN_DIR . 'includes/stop-words');
 
 // Include required files

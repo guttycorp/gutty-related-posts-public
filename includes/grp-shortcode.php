@@ -31,6 +31,9 @@ function gutty_related_posts_shortcode($atts) {
     $related_posts = $related_posts_block->get_related_posts(null, $atts['number']);
 
     ob_start();
+    
+    // Do not remove, prevent infinite loop
+    remove_all_filters('the_content');
 
     if (!empty($related_posts)) {
         ?>
@@ -65,3 +68,17 @@ function gutty_related_posts_shortcode($atts) {
     return ob_get_clean();
 }
 add_shortcode('gutty_related_posts', 'gutty_related_posts_shortcode');
+
+// Add action to display related posts automatically if enabled
+add_filter('the_content', 'gutty_related_posts_append_related_posts_after_content', 1000, 1);
+function gutty_related_posts_append_related_posts_after_content($content) {
+    $options = get_option('guttyrelatedposts_settings');
+    $after_post_content = isset($options['guttyrelatedposts_after_post_content']) ? (bool) $options['guttyrelatedposts_after_post_content'] : false;
+
+    if ($after_post_content && is_singular('post') && in_the_loop() && is_main_query()) {
+        $related_posts = gutty_related_posts_shortcode(['number' => $options['guttyrelatedposts_number_of_posts'] ?? 5]);
+        $content .= $related_posts;
+    }
+
+    return $content;
+}
