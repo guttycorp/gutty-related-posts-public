@@ -49,7 +49,7 @@ Source available on our Github public repository: https://github.com/guttycorp/g
 5. Enjoy!
 
 == Changelog ==
-* 1.3 =
+= 1.3 =
 * NEW WordPress Multisite support
 
 = 1.2 =
