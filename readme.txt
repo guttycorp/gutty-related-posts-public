@@ -6,7 +6,7 @@ Tags: full site editing, block editor, blocks, related posts
 Requires at least: 6.4+
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,7 @@ Gutty Related Posts is a powerful and easy-to-use WordPress plugin that leverage
 - Fully compatible with WordPress Full Site Editing (FSE).
 - Optimized for use with the Block Editor (Gutenberg).
 - Also works with any page builders supporting shortcodes.
+- WordPress Multisite.
 
 Make your content more engaging by offering visitors personalized, relevant reading options. Install Gutty Related Posts today!
 
@@ -48,6 +49,9 @@ Source available on our Github public repository: https://github.com/guttycorp/g
 5. Enjoy!
 
 == Changelog ==
+* 1.3 =
+* NEW WordPress Multisite support
+
 = 1.2 =
 * NEW Option to automatically display the related post block after the post content (Posts only)
 

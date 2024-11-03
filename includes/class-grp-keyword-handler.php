@@ -26,12 +26,12 @@ class GuttyRelatedPosts_Keyword_Handler {
         $table_name = $wpdb->prefix . 'gutty_related_posts_keywords';
         $charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (
+        $sql = "CREATE TABLE $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             post_id mediumint(9) NOT NULL,
             keyword varchar(255) NOT NULL,
             tf_idf float NOT NULL,
-            PRIMARY KEY  (id),
+            PRIMARY KEY (id),
             KEY post_id (post_id),
             KEY keyword (keyword)
         ) $charset_collate;";

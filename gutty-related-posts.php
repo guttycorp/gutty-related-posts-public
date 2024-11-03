@@ -3,7 +3,7 @@
 Plugin Name: Gutty Related Posts
 Plugin URI: https://guttypress.com/
 Description: Gutty Related Posts is the best way to show related and relevant content on your WordPress site using the power of the Block Editor and Full Site Editing.
-Version: 1.2
+Version: 1.3
 Author: Team GuttyPress
 Author URI: https://profiles.wordpress.org/guttypress/
 License: GPL2
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GUTTY_RELATED_POSTS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GUTTY_RELATED_POSTS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('GUTTY_RELATED_POSTS_VERSION', '1.2');
+define('GUTTY_RELATED_POSTS_VERSION', '1.3');
 define('GUTTY_RELATED_POSTS_STOP_WORDS', GUTTY_RELATED_POSTS_PLUGIN_DIR . 'includes/stop-words');
 
 // Include required files
@@ -37,6 +37,16 @@ function gutty_related_posts_activate_plugin() {
     $grp_keyword_handler->create_keyword_table();
 }
 register_activation_hook(__FILE__, 'gutty_related_posts_activate_plugin');
+add_action('plugins_loaded', 'gutty_related_posts_activate_plugin');
+
+function gutty_related_posts_create_tables_multisite($blog_id) {
+    if (is_plugin_active_for_network(plugin_basename(__FILE__))) {
+        switch_to_blog($blog_id);
+        gutty_related_posts_activate_plugin();
+        restore_current_blog();
+    }
+}
+add_action('wpmu_new_blog', 'gutty_related_posts_create_tables_multisite');
 
 // Load plugin textdomain for translations
 function gutty_related_posts_load_textdomain() {
