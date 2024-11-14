@@ -4,7 +4,7 @@ Contributors: guttypress, rainbowgeek, corsonr, maigret
 Donate link: https://guttypress.com/
 Tags: full site editing, block editor, blocks, related posts
 Requires at least: 6.4+
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.3
 License: GPLv2 or later
